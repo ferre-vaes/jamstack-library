@@ -1,0 +1,13 @@
+type Link {
+  id: ID!
+  title: String!
+  author: String!
+  average_rating: Float!
+  isbn: String!
+  language_code: String!
+  num_pages: Int!
+}
+
+type Query {
+  allLinks: [Link!]!
+}
