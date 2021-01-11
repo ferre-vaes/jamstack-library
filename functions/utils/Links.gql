@@ -1,5 +1,4 @@
 type Link {
-  id: ID!
   title: String!
   author: String!
   average_rating: Float!
