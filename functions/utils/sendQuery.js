@@ -3,9 +3,11 @@ require('dotenv').config()
 const url = 'https://graphql.fauna.com/graphql'
 
 module.exports = async (query, variables) => { 
+  console.log(variables)
+  console.log(query)
   const { 
     data: {
-      data , error
+      data , errors
     } 
   } = await axios({
     url,
@@ -19,10 +21,10 @@ module.exports = async (query, variables) => {
     }
   })
 
-  if(error) {
-    console.log(error)
-    throw new Error('Something went wrong')
+  if(errors) {
+    console.log(errors)
+    throw new Error(errors[0].message)
   }
-
+  console.log(data)
   return data
 }

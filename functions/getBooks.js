@@ -1,20 +1,15 @@
-const { GET_BOOKS } = require('./utils/constants')
+const { GET_BOOKS } = require('./utils/linkQueries')
 const sendQuery = require('./utils/sendQuery')
+const formatRespone = require('./utils/formatResponse')
 
 exports.handler = async (event) => {
   try {
     const res = await sendQuery(GET_BOOKS, {})
-    const data = res.allLinks.data
+    const data = res.allBooks.data
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data)
-    }
+    return formatRespone(200, data)
   } catch (error) {
     console.log(error)
-    return {
-      statusCode: 500,
-      body: JSON.stringify({msg: 'Something went wrong'})
-    }
+    return formatRespone(500, {err: 'Something went wrong'})
   }
 }
