@@ -3,8 +3,8 @@ const sendQuery = require('./utils/sendQuery')
 const formatRespone = require('./utils/formatResponse')
 
 exports.handler = async (event) => {
-  const variables = JSON.parse(event.body)
-  console.log(variables)
+  const { title, author, average_rating, isbn, language_code, num_pages } = JSON.parse(event.body)
+  const variables = { title, author, average_rating, isbn, language_code, num_pages }
   try {
     const { createBook } = await sendQuery(CREATE_BOOK, variables)
 

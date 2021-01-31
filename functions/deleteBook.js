@@ -3,8 +3,8 @@ const sendQuery = require('./utils/sendQuery')
 const formatRespone = require('./utils/formatResponse')
 
 exports.handler = async (event) => {
-  const variables = JSON.parse(event.body)
-  console.log(variables)
+  const { id } = JSON.parse(event.body)
+  const variables = { id }
   try {
     const { deleteBook } = await sendQuery(DELETE_BOOK, variables)
 
